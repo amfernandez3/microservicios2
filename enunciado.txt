@@ -1,0 +1,43 @@
+
+1
+Ejercicio Productos – Pedidos
+Se pretende crear una aplicación basada en microservicios. En el backend la aplicación constará
+de dos microservicios que accederán a una base de datos.
+La tabla productos consta de la siguiente información:
+codigoProducto: int primary key, not null
+producto:  varchar
+precioUnitaro: double
+stock:  int
+
+La tabla pedidos consta de la siguiente información:
+idPedido: int primary key, not null
+codigoProducto: int
+unidades:  int
+total:  double
+fechaPedido: datetime
+
+Servicio de productos:
+Expone tres recursos:
+•V Un recurso que ante una petición get, devuelve la lista de productos existentes.
+•V Un recurso que al recibir una petición put, actualiza el stock del producto indicado. En
+la url de la petición se reciben el código de producto y unidades compradas.
+•V Un recurso que al recibir una petición get con el código del producto, devuelve el
+precio unitario del mismo.
+Servicio de pedidos:
+Expone dos recursos:
+• Un recurso dará de alta un nuevo pedido al recibir en una petición de tipo post que
+incluirá en el cuerpo de la misma los datos del pedido. Desde este servicio se realizarán
+las correspondientes llamadas a los recursos del servicio de productos para actualizar
+el stock.
+•V Un recurso que al recibir una petición get devuelva todos los pedidos registrados.
+
+
+
+get:pedido Servicio
+pedidos
+Servicio
+productos
+put:producto
+get:precio
+get:producto
+post:pedido
